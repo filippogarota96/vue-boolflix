@@ -2,7 +2,7 @@ var app = new Vue ({
   el: '#app',
   data: {
     movies: [],
-    searchMovie: ''
+    searchMovie: '',
   },
   methods: {
     filterMovie: function () {
@@ -17,6 +17,11 @@ var app = new Vue ({
         })
         .then((risposta) => {
           this.movies = risposta.data.results;
+          this.movies.forEach((item, i) => {
+            let voteRating = item.vote_average / 2;
+            let roundVote = Math.floor(voteRating);
+            item.vote_average = roundVote;
+          });
         });
       }
     },

@@ -7,6 +7,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js" integrity="sha512-otOZr2EcknK9a5aa3BbMR9XOjYKtxxscwyRHN6zmdXuRfJ5uApkHB7cz1laWk2g8RKLzV9qv/fl3RPwfCuoxHQ==" crossorigin="anonymous"></script>
   <!-- development version, includes helpful console warnings -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
   <link rel="stylesheet" href="css/style.css">
   <title>Document</title>
 </head>
@@ -14,7 +15,7 @@
   <div id="app">
     <header>
       <div class="logo">
-        <h1>Boolflix</h1>
+        <img src="img/boolflix.png" alt="">
       </div>
       <div class="search-wrapper">
         <input type="text" id="search-item" name="search-item" value="" v-model="searchMovie" v-on:keydown.13 ="filterMovie">
@@ -23,14 +24,22 @@
     </header>
     <main>
       <div class="container">
-        <div v-for= "movie in movies" class="movie">
+        <div v-for= "(movie, index) in movies" class="movie">
           <img :src="'https://image.tmdb.org/t/p/w300'+ movie.poster_path " alt="">
         <div class="overlay">
           <ul>
             <li><span class="title">Title:</span> {{movie.title}}</li>
             <li><span class="title">Original title:</span> {{movie.original_title}}</li>
-            <li><span class="title">Voto</span> {{movie.vote_average}}</li>
-            <li><span class="title">Overview</span> {{movie.overview}}</li>
+            <li class="rating">
+              <span class="title">Voto</span>
+              <ul rating-list>
+                <li v-for="n in movies.vote_average"><i class="fas fa-star"></i></li>
+                <li><i class="far fa-star"></i></li>
+              </ul>
+            </li>
+            <li v-if ="movie.overview ==''"><span class="title">Overview</span> trama non disponibile</li>
+            <li v-else><span class="title">Overview:</span>{{movie.overview}}</li>
+
           </ul>
         </div>
       </div>
