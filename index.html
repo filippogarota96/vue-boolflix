@@ -23,7 +23,8 @@
     </header>
     <main>
       <div class="container">
-        <div v-for= "movie in movies" class="movie" >
+        <div v-for= "movie in movies" class="movie">
+          <img :src="'https://image.tmdb.org/t/p/w300'+ movie.poster_path " alt="">
         </div>
       </div>
     </main>
