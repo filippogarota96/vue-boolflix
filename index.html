@@ -17,7 +17,7 @@
         <h1>Boolflix</h1>
       </div>
       <div class="search-wrapper">
-        <input type="text" id="search-item" name="search-item" value="" v-model="searchMovie">
+        <input type="text" id="search-item" name="search-item" value="" v-model="searchMovie" v-on:keydown.13 ="filterMovie">
         <button type="button"class="search-btn" name="search-btn" @click="filterMovie">Cerca</button>
       </div>
     </header>
@@ -25,10 +25,18 @@
       <div class="container">
         <div v-for= "movie in movies" class="movie">
           <img :src="'https://image.tmdb.org/t/p/w300'+ movie.poster_path " alt="">
+        <div class="overlay">
+          <ul>
+            <li><span class="title">Title:</span> {{movie.title}}</li>
+            <li><span class="title">Original title:</span> {{movie.original_title}}</li>
+            <li><span class="title">Voto</span> {{movie.vote_average}}</li>
+            <li><span class="title">Overview</span> {{movie.overview}}</li>
+          </ul>
         </div>
       </div>
-    </main>
-  </div>
-  <script src="js/script.js" charset="utf-8"></script>
+    </div>
+  </main>
+</div>
+<script src="js/script.js" charset="utf-8"></script>
 </body>
 </html>

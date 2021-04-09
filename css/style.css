@@ -23,6 +23,7 @@ header {
 
 .container {
   display: flex;
+  flex-wrap: wrap;
   padding: 50px;
 }
 .movie {
@@ -30,4 +31,43 @@ header {
   height: 300px;
   margin-right: 20px;
   background-color: black;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.movie > img {
+  width: 100%;
+  max-height: 100%;
+}
+
+.overlay {
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  z-index:2;
+  background: black;
+  padding: 10px 5px;
+}
+.overlay:hover {
+  opacity: 1;
+}
+.overlay ul {
+  list-style: none;
+}
+.overlay .title {
+  color: white;
+  display: inline-block;
+  font-size: 18px;
+
+}
+
+.overlay li {
+  color: grey;
+  font-size: 12px;
 }
