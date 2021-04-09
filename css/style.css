@@ -4,6 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: grey;
+}
 
 header {
   background-color: black;
@@ -16,4 +19,15 @@ header {
 
 .logo h1 {
   color: red;
+}
+
+.container {
+  display: flex;
+  padding: 50px;
+}
+.movie {
+  width: 240px;
+  height: 300px;
+  margin-right: 20px;
+  background-color: black;
 }

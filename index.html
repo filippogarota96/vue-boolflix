@@ -17,12 +17,15 @@
         <h1>Boolflix</h1>
       </div>
       <div class="search-wrapper">
-        <input type="text" id="search-item" name="search-item" value="">
-        <button type="button"class="search-btn" name="search-btn">Cerca</button>
+        <input type="text" id="search-item" name="search-item" value="" v-model="searchMovie">
+        <button type="button"class="search-btn" name="search-btn" @click="filterMovie">Cerca</button>
       </div>
     </header>
     <main>
-
+      <div class="container">
+        <div v-for= "movie in movies" class="movie" >
+        </div>
+      </div>
     </main>
   </div>
   <script src="js/script.js" charset="utf-8"></script>
