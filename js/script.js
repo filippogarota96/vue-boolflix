@@ -7,7 +7,7 @@ var app = new Vue ({
   methods: {
     filterMovie: function () {
       if (this.searchMovie) {
-        axios.get("https://api.themoviedb.org/3/search/movie?", {
+        axios.get("https://api.themoviedb.org/3/search/movie", {
           params: {
             "api_key": "d0c11e47595cb972b76620a5f0e0ee12",
             "language":"it-IT",
