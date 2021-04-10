@@ -33,8 +33,8 @@
             <li class="rating">
               <span class="title">Voto</span>
               <ul rating-list>
-                <li v-for="n in movies.vote_average"><i class="fas fa-star"></i></li>
-                <li><i class="far fa-star"></i></li>
+                <li v-for="(item,index) in movie.vote_average"> <i class="fas fa-star"></i></li>
+                <li v-for ="(item,index) in (5 - movie.vote_average)"> <i class="far fa-star"></i></li>
               </ul>
             </li>
             <li v-if ="movie.overview ==''"><span class="title">Overview</span> trama non disponibile</li>
