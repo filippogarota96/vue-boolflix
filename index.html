@@ -24,24 +24,29 @@
     </header>
     <main>
       <div class="container">
-        <div v-for= "(movie, index) in movies" class="movie">
-          <img :src="'https://image.tmdb.org/t/p/w300'+ movie.poster_path " alt="">
-        <div class="overlay">
-          <ul>
-            <li><span class="title">Title:</span> {{movie.title}}</li>
-            <li><span class="title">Original title:</span> {{movie.original_title}}</li>
-            <li class="rating">
-              <span class="title">Voto</span>
-              <ul rating-list>
-                <li v-for="(item,index) in movie.vote_average"> <i class="fas fa-star"></i></li>
-                <li v-for ="(item,index) in (5 - movie.vote_average)"> <i class="far fa-star"></i></li>
-              </ul>
-            </li>
-            <li v-if ="movie.overview ==''"><span class="title">Overview</span> trama non disponibile</li>
-            <li v-else><span class="title">Overview:</span>{{movie.overview}}</li>
 
-          </ul>
-        </div>
+          <div v-for= "(movie, index) in movies" class="movie">
+            <img :src="'https://image.tmdb.org/t/p/w300'+ movie.poster_path " alt="">
+          <div class="overlay">
+            <ul>
+              <li><span class="title">Titolo:</span> {{movie.title}}</li>
+              <li><span class="title">Titolo originale:</span> {{movie.original_title}}</li>
+              <li class="lang-wrapper">
+                <span class="title">Lingua originale:</span>
+                <img v-if="movie.original_language == 'en' ? movie.original_language = 'gb' : movie.original_language"
+                  v-bind:src="'https://www.countryflags.io/' + movie.original_language + '/flat/16.png'" alt="">
+              </li>
+              <li class="rating">
+                <span class="title">Voto:</span>
+                <ul rating-list>
+                  <li v-for="(item,index) in movie.vote_average"> <i class="fas fa-star"></i></li>
+                  <li v-for ="(item,index) in (5 - movie.vote_average)"> <i class="far fa-star"></i></li>
+                </ul>
+              </li>
+              <li v-if ="movie.overview ==''"><span class="title">Overview</span> trama non disponibile</li>
+              <li v-else><span class="title">Overview:</span>{{movie.overview}}</li>
+            </ul>
+          </div>
       </div>
     </div>
   </main>

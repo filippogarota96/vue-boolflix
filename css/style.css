@@ -85,3 +85,12 @@ header {
 .rating-list li {
   color: white;
 }
+
+.lang-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.lang-wrapper img {
+  margin-left: 5px;
+}
