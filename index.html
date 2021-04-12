@@ -42,7 +42,8 @@
           <img :src="'https://image.tmdb.org/t/p/w300'+ movie.poster_path " alt="">
           <div class="overlay">
             <ul>
-              <li><span class="title">Titolo:</span> {{movie.title}}</li>
+              <li v-if ='movie.title'><span class="title">Titolo:</span> {{movie.title}}</li>
+              <li v-if = 'movie.name'><span class="title">Titolo:</span>{{movie.name}}</li>
               <li><span class="title">Titolo originale:</span> {{movie.original_title}}</li>
               <li class="lang-wrapper">
                 <span class="title">Lingua originale:</span>
