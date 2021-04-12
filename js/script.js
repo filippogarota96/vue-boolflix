@@ -12,48 +12,49 @@ var app = new Vue ({
       'en-US',
       'fr-FR',
       'es-ES',
-    ]
+    ],
+    movieCategory: true
   },
   methods: {
     filterMovie: function () {
       if (this.searchMovie) {
-        // funzione che stampa i film
-        axios.get(this.baseURL + 'movie', {
-          params: {
-            "api_key": this.apiKey,
-            "language": this.langs[this.langIndex],
-            "query": this.searchMovie,
-            "include_adult": false
-          }
-        })
-        .then((risposta) => {
-          this.movies = risposta.data.results;
-          this.movies.forEach((item, i) => {
-            let voteRating = item.vote_average / 2;
-            let roundVote = Math.floor(voteRating);
-            item.vote_average = roundVote;
-
+        if(this.movieCategory) {
+          axios.get(this.baseURL + 'movie', {
+            params: {
+              "api_key": this.apiKey,
+              "language": this.langs[this.langIndex],
+              "query": this.searchMovie,
+              "include_adult": false
+            }
+          })
+          .then((risposta) => {
+            this.movies = risposta.data.results;
+            this.movies.forEach((item, i) => {
+              let voteRating = item.vote_average / 2;
+              let roundVote = Math.floor(voteRating);
+              item.vote_average = roundVote;
+            });
           });
-        });
-        // funzione che stampa i film - end
-
-        axios.get(this.baseURL + 'tv', {
-          params: {
-            "api_key": this.apiKey,
-            "language": this.langs[this.langIndex],
-            "query": this.searchMovie,
-            "include_adult": false
-          }
-        }) .then((risposta)=> {
-          this.series = risposta.data.results;
-          this.series.forEach((item, i) => {
-            // modifico il voto
-            let voteRating = item.vote_average / 2;
-            let roundVote = Math.floor(voteRating);
-            item.vote_average = roundVote;
-            this.movies.push(item);
+        } else {
+          // funzione che stampa i film - end
+          axios.get(this.baseURL + 'tv', {
+            params: {
+              "api_key": this.apiKey,
+              "language": this.langs[this.langIndex],
+              "query": this.searchMovie,
+              "include_adult": false
+            }
+          }) .then((risposta)=> {
+            this.series = risposta.data.results;
+            this.series.forEach((item, i) => {
+              // modifico il voto
+              let voteRating = item.vote_average / 2;
+              let roundVote = Math.floor(voteRating);
+              item.vote_average = roundVote;
+              this.movies.push(item);
+            });
           });
-        });
+        }
       }
     },
   }
