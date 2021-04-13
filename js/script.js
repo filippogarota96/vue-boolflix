@@ -13,12 +13,13 @@ var app = new Vue ({
       'fr-FR',
       'es-ES',
     ],
-    movieCategory: true
+    movieCategory: true,
+
   },
   methods: {
     filterMovie: function () {
 
-      if (this.searchMovie) {
+      if (this.searchMovie != "") {
         if(this.movieCategory) {
           axios.get(this.baseURL + 'movie', {
             params: {
@@ -32,10 +33,9 @@ var app = new Vue ({
             this.movies = risposta.data.results;
             this.movies.forEach((item, i) => {
               let voteRating = item.vote_average / 2;
-              let roundVote =  voteRating.toFixed();
+              let roundVote = Math.floor(voteRating);
               item.vote_average = roundVote;
             });
-            this.searchMovie = "";
           });
         } else {
           // funzione che stampa i film - end
@@ -51,7 +51,7 @@ var app = new Vue ({
             this.series.forEach((item, i) => {
               // modifico il voto
               let voteRating = item.vote_average / 2;
-              let roundVote = voteRating.toFixed();
+              let roundVote = Math.floor(voteRating);
               item.vote_average = roundVote;
               this.movies.push(item);
             });

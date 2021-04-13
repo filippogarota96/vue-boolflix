@@ -44,18 +44,33 @@ header {
   font-size: 16px;
   cursor: pointer
 }
+.search-wrapper {
+  position: relative;
+}
 #search-item {
   height: 30px;
-  padding: 3px;
-  border: none;
+  width: 200px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 5px;
   border-radius: 5px;
   font-family:'Lato', sans-serif;
 }
-.nav-btn:focus, #search-item:focus {
+.nav-btn:focus, #search-item:focus, .search-btn:focus {
   outline: none;
 }
 .search-btn {
   cursor: pointer;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 16px;
+  margin-left: 5px;
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  z-index: 2
 }
 
 /* stile del main */

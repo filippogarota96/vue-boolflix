@@ -27,19 +27,19 @@
       </nav>
       <div class="search-wrapper">
         <input type="text" id="search-item" name="search-item" value="" v-model="searchMovie" v-on:keydown.13 ="filterMovie" placeholder="Titolo">
-        <button type="button"class="search-btn" name="search-btn" @click="filterMovie">Cerca</button>
+        <button type="button"class="search-btn" name="search-btn" @click="filterMovie"><i class="fas fa-search"></i></button>
       </div>
     </header>
 
-
     <main>
+      <!-- template solo per i film -->
       <div v-if="movieCategory" class="row-container">
         <div v-for= "(movie, index) in movies" class="movie">
           <img :src="'https://image.tmdb.org/t/p/w300'+ movie.poster_path " alt="">
           <div class="overlay">
             <ul>
               <li v-if ='movie.title'><span class="title">Titolo:</span> {{movie.title}}</li>
-              <li v-if = 'movie.name'><span class="title">Titolo:</span>{{movie.name}}</li>
+              <!-- <li v-if = 'movie.name'><span class="title">Titolo:</span>{{movie.name}}</li> -->
               <li><span class="title">Titolo originale:</span> {{movie.original_title}}</li>
               <li class="lang-wrapper">
                 <span class="title">Lingua originale:</span>
@@ -56,21 +56,21 @@
                   <li v-for ="(item,index) in (5 - movie.vote_average)"> <i class="far fa-star"></i></li>
                 </ul>
               </li>
-              <li v-if ="movie.overview ==''"><span class="title">Overview</span> Sinossi non disponibile</li>
+              <li v-if ="movie.overview ==''"><span class="title">Overview:</span> Non disponibile</li>
               <li v-else><span class="title">Overview:</span>{{movie.overview}}</li>
             </ul>
           </div>
         </div>
       </div>
+      <!-- template solo per le serie -->
       <div v-else class="row-container">
-        <!-- template per le serie -->
         <div v-for= "(movie, index) in movies" class="movie">
           <img :src="'https://image.tmdb.org/t/p/w300'+ movie.poster_path " alt="">
           <div class="overlay">
             <ul>
-              <li v-if ='movie.title'><span class="title">Titolo:</span> {{movie.title}}</li>
+              <!-- <li v-if ='movie.title'><span class="title">Titolo:</span> {{movie.title}}</li> -->
               <li v-if ='movie.name'><span class="title">Titolo:</span>{{movie.name}}</li>
-              <li><span class="title">Titolo originale:</span> {{movie.original_title}}</li>
+              <li><span class="title">Titolo originale:</span> {{movie.original_name}}</li>
               <li class="lang-wrapper">
                 <span class="title">Lingua originale:</span>
                 <img v-if="movie.original_language == 'en' ? movie.original_language = 'gb' : movie.original_language"
