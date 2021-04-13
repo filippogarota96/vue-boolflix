@@ -34,6 +34,7 @@ var app = new Vue ({
               let roundVote = Math.floor(voteRating);
               item.vote_average = roundVote;
             });
+            this.searchMovie = "";
           });
         } else {
           // funzione che stampa i film - end
@@ -58,10 +59,12 @@ var app = new Vue ({
       }
     },
     shiftCategory: function () {
-      if (this.movieCategory == true) {
+      if (this.movieCategory) {
         this.movieCategory = false;
+        console.log(this.movieCategory);
       } else {
         this.movieCategory = true;
+        console.log(this.movieCategory);
       }
     }
   },

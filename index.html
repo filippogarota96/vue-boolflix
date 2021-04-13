@@ -22,8 +22,8 @@
         </div>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><button @click="shiftCategory" v-if="movieCategory" class="nav-btn">Film</button></li>
-          <li><button @click="shiftCategory" v-if="movieCategory" class="nav-btn">Serie tv</button></li>
+          <li><button @click="shiftCategory" class="nav-btn">Film</button></li>
+          <li><button @click="shiftCategory"  class="nav-btn">Serie tv</button></li>
           <li><a href="#">Nuovi e popolari</a></li>
           <li><a href="#">La mia lista</a></li>
         </ul>
@@ -37,7 +37,6 @@
 
     <main>
       <div v-if="movieCategory" class="row-container">
-
         <div v-for= "(movie, index) in movies" class="movie">
           <img :src="'https://image.tmdb.org/t/p/w300'+ movie.poster_path " alt="">
           <div class="overlay">
