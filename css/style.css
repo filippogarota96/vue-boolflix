@@ -120,6 +120,7 @@ main {
   z-index:2;
   background: black;
   padding: 10px 5px;
+  transition: 0.5s opacity ease;
 }
 .overlay:hover {
   opacity: 1;

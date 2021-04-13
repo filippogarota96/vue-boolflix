@@ -53,7 +53,7 @@ var app = new Vue ({
               let voteRating = item.vote_average / 2;
               let roundVote = Math.floor(voteRating);
               item.vote_average = roundVote;
-              this.movies.push(item);
+              // this.movies.push(item);
             });
           });
         }
