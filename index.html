@@ -21,11 +21,8 @@
           <img src="img/boolflix.png" alt="">
         </div>
         <ul>
-          <li><a href="#">Home</a></li>
           <li><button @click="shiftCategory" class="nav-btn">Film</button></li>
           <li><button @click="shiftCategory"  class="nav-btn">Serie tv</button></li>
-          <li><a href="#">Nuovi e popolari</a></li>
-          <li><a href="#">La mia lista</a></li>
         </ul>
       </nav>
       <div class="search-wrapper">
@@ -48,6 +45,9 @@
                 <span class="title">Lingua originale:</span>
                 <img v-if="movie.original_language == 'en' ? movie.original_language = 'gb' : movie.original_language"
                 v-bind:src="'https://www.countryflags.io/' + movie.original_language + '/flat/16.png'" alt="">
+                <img v-if="movie.original_language == 'ja' ? movie.original_language = 'jp' : ''"
+                v-bind:src="'https://www.countryflags.io/' + movie.original_language + '/flat/16.png'" alt="">
+                <span class="lang-item">{{movie.original_language}}</span>
               </li>
               <li class="rating">
                 <span class="title">Voto:</span>
@@ -56,7 +56,7 @@
                   <li v-for ="(item,index) in (5 - movie.vote_average)"> <i class="far fa-star"></i></li>
                 </ul>
               </li>
-              <li v-if ="movie.overview ==''"><span class="title">Overview</span> trama non disponibile</li>
+              <li v-if ="movie.overview ==''"><span class="title">Overview</span> Sinossi non disponibile</li>
               <li v-else><span class="title">Overview:</span>{{movie.overview}}</li>
             </ul>
           </div>

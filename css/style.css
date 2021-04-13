@@ -33,10 +33,29 @@ header {
 .main-nav li {
   margin: 0 2%;
 }
-
 .main-nav li a {
   color: #ffff;
   text-decoration: none
+}
+.nav-btn {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer
+}
+#search-item {
+  height: 30px;
+  padding: 3px;
+  border: none;
+  border-radius: 5px;
+  font-family:'Lato', sans-serif;
+}
+.nav-btn:focus, #search-item:focus {
+  outline: none;
+}
+.search-btn {
+  cursor: pointer;
 }
 
 /* stile del main */
@@ -124,4 +143,8 @@ main {
 
 .lang-wrapper img {
   margin-left: 5px;
+}
+
+.lang-wrapper .lang-item {
+  color: white;
 }

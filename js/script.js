@@ -17,6 +17,7 @@ var app = new Vue ({
   },
   methods: {
     filterMovie: function () {
+
       if (this.searchMovie) {
         if(this.movieCategory) {
           axios.get(this.baseURL + 'movie', {
@@ -31,7 +32,7 @@ var app = new Vue ({
             this.movies = risposta.data.results;
             this.movies.forEach((item, i) => {
               let voteRating = item.vote_average / 2;
-              let roundVote = Math.floor(voteRating);
+              let roundVote =  voteRating.toFixed();
               item.vote_average = roundVote;
             });
             this.searchMovie = "";
@@ -50,7 +51,7 @@ var app = new Vue ({
             this.series.forEach((item, i) => {
               // modifico il voto
               let voteRating = item.vote_average / 2;
-              let roundVote = Math.floor(voteRating);
+              let roundVote = voteRating.toFixed();
               item.vote_average = roundVote;
               this.movies.push(item);
             });
