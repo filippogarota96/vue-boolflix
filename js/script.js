@@ -57,5 +57,12 @@ var app = new Vue ({
         }
       }
     },
-  }
+    shiftCategory: function () {
+      if (this.movieCategory == true) {
+        this.movieCategory = false;
+      } else {
+        this.movieCategory = true;
+      }
+    }
+  },
 });
