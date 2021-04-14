@@ -14,6 +14,7 @@ var app = new Vue ({
       'es-ES',
     ],
     movieCategory: true,
+    isActive: true
 
   },
   methods: {
@@ -53,19 +54,18 @@ var app = new Vue ({
               let voteRating = item.vote_average / 2;
               let roundVote = Math.floor(voteRating);
               item.vote_average = roundVote;
-              // this.movies.push(item);
             });
           });
         }
       }
     },
     shiftCategory: function () {
-      if (this.movieCategory) {
+      if (this.movieCategory && this.isActive) {
         this.movieCategory = false;
-        console.log(this.movieCategory);
+        this.isActive = false
       } else {
         this.movieCategory = true;
-        console.log(this.movieCategory);
+        this.isActive = true
       }
     }
   },

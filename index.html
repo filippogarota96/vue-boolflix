@@ -21,8 +21,8 @@
           <img src="img/boolflix.png" alt="">
         </div>
         <ul>
-          <li><button @click="shiftCategory" class="nav-btn">Film</button></li>
-          <li><button @click="shiftCategory"  class="nav-btn">Serie tv</button></li>
+          <li><button @click="shiftCategory" :class="{'btn-active': isActive}" class="nav-btn">Film</button></li>
+          <li><button @click="shiftCategory":class="{'btn-active': !isActive}" class="nav-btn">Serie tv</button></li>
         </ul>
       </nav>
       <div class="search-wrapper">
@@ -73,6 +73,8 @@
               <li class="lang-wrapper">
                 <span class="title">Lingua originale:</span>
                 <img v-if="serie.original_language == 'en' ? serie.original_language = 'gb' : serie.original_language"
+                v-bind:src="'https://www.countryflags.io/' + serie.original_language + '/flat/16.png'" alt="">
+                <img v-if="serie.original_language == 'ja' ? serie.original_language = 'jp' : ''"
                 v-bind:src="'https://www.countryflags.io/' + serie.original_language + '/flat/16.png'" alt="">
               </li>
               <li class="rating">
