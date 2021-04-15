@@ -19,7 +19,6 @@ var app = new Vue ({
   },
   methods: {
     filterMovie: function () {
-
       if (this.searchMovie != "") {
         if(this.movieCategory) {
           axios.get(this.baseURL + 'movie', {

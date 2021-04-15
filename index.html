@@ -35,7 +35,8 @@
       <!-- template solo per i film -->
       <div v-if="movieCategory" class="row-container">
         <div v-for= "(movie, index) in movies" class="movie">
-          <img :src="'https://image.tmdb.org/t/p/w300'+ movie.poster_path " alt="">
+          <img v-if="movie.poster_path " :src="'https://image.tmdb.org/t/p/w300'+ movie.poster_path " alt="">
+          <div v-else class="not__img"><h2>Immagine non disponibile</h2></div>
           <div class="overlay">
             <ul>
               <li v-if ='movie.title'><span class="title">Titolo:</span> {{movie.title}}</li>
@@ -47,7 +48,6 @@
                 v-bind:src="'https://www.countryflags.io/' + movie.original_language + '/flat/16.png'" alt="">
                 <img v-if="movie.original_language == 'ja' ? movie.original_language = 'jp' : ''"
                 v-bind:src="'https://www.countryflags.io/' + movie.original_language + '/flat/16.png'" alt="">
-                <span class="lang-item">{{movie.original_language}}</span>
               </li>
               <li class="rating">
                 <span class="title">Voto:</span>
@@ -65,7 +65,8 @@
       <!-- template solo per le serie -->
       <div v-else class="row-container">
         <div v-for= "(serie, index) in series" v-if="serie.poster_path" class="movie">
-          <img :src="'https://image.tmdb.org/t/p/w300'+ serie.poster_path " alt="">
+          <img v-if="serie.poster_path" :src="'https://image.tmdb.org/t/p/w300'+ serie.poster_path " alt="">
+          <div v-else class="not__img"><h2>Immagine non disponibile</h2></div>
           <div class="overlay">
             <ul>
               <li v-if ='serie.name'><span class="title">Titolo:</span>{{serie.name}}</li>
